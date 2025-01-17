@@ -79,6 +79,24 @@ function fixString(s)
     return c
 end
 
+local function GetFullCharacterName(User)
+    local FIndFirstChild = game.FindFirstChild;
+    local FirstName;
+    local LastName;
+    if (RogueVersion == 'Gaia') then 
+        FirstName = User:GetAttribute('FirstName');
+        LastName = User:GetAttribute('LastName');
+    elseif (FindFirstChild(User, 'leaderstats') and FindFirstChild(User.leaderstats, 'FirstName') and FindFirstChild(User.leaderstats, 'LastName')) then
+        FirstName = User.leaderstats.FirstName.Value;
+        LastName = User.leaderstats.LastName.Value;
+    end;
+
+    FirstName = FirstName or '';
+    LastName = LastName or '';
+
+    return LastName ~= '' and FirstName .. ' ' .. LastName or FirstName;
+end;
+
 local playerRows = {}
 local playerIdList = {}
 
@@ -87,9 +105,7 @@ for i, player in pairs(game:GetService('Players'):GetPlayers()) do
     local url = "https://www.roblox.com/users/"..player.UserId.."/profile"
     local markdownLink = "["..username.."]("..url..")"
     
-    local firstName = player:GetAttribute("FirstName") or ""
-    local lastName = player:GetAttribute("LastName") or ""
-    local fullName = lastName:match("^%s*$") and firstName or firstName.." "..lastName
+    local fullName = GetFullCharacterName(player)
 
     local spawned = player.Character and true or false
 
