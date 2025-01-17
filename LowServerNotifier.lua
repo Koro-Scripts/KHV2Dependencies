@@ -1,4 +1,6 @@
 -- this script was made by @AntiPixel (.antipixel) and modified to work with Koro Hub
+local Args = {...};
+local WebhookUrl = Args[1];
 
 repeat wait(0.25) until game:IsLoaded()
 repeat wait(0.25) until getgenv().UsingLowServerNotifier and #game:GetService("Players"):GetPlayers() <= 8;
@@ -153,7 +155,7 @@ local msg = {
 }
 
 local response = request({
-    Url = "https://discord.com/api/webhooks/1329270786439249960/wwwlXajyAz1TBHPtbDj66k9bc_OTsS-fxk0j49LyS4mHay3eFQ_dW5TM4f-0oHyjbVfI",
+    Url = WebhookUrl,
     Method = "POST",
     Headers = {
         ["Content-Type"] = "application/json"
