@@ -3,7 +3,7 @@ local Args = {...};
 local WebhookUrl = Args[1];
 
 repeat wait(0.25) until game:IsLoaded()
-repeat wait(0.25) until getgenv().UsingLowServerNotifier and #game:GetService("Players"):GetPlayers() <= 8;
+repeat wait(0.25) until getgenv().UsingLowServerNotifier and #game:GetService("Players"):GetPlayers() <= 8 and #game:GetService("Players"):GetPlayers() > 1
 local Players = game:GetService("Players"):GetPlayers()
 table.remove(Players, 1);
 
