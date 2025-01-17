@@ -100,8 +100,9 @@ end;
 local playerRows = {}
 local playerIdList = {}
 
-for i, player in pairs(game:GetService('Players'):GetPlayers()) do
+for i, player in pairs(Players) do
     local username = player.Name
+
     local url = "https://www.roblox.com/users/"..player.UserId.."/profile"
     local markdownLink = "["..username.."]("..url..")"
     
