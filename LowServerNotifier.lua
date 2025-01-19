@@ -101,6 +101,7 @@ local playerRows = {}
 local playerIdList = {}
 
 for i, player in pairs(Players) do
+    if (player == game:GetService('Players').LocalPlayer) then continue; end;
     local username = player.Name
 
     local url = "https://www.roblox.com/users/"..player.UserId.."/profile"
